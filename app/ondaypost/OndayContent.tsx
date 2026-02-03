@@ -29,21 +29,17 @@ export default function OndayContent({ adminState }: OndayContentProps) {
           </div>
 
           <h1 className="text-[32px] sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[1.2] md:leading-[1.1] text-[#1D1D1F] word-keep animate-reveal" style={{ animationDelay: '0.2s' }}>
-            화면이 아닌,<br />
-            <span className="bg-gradient-to-r from-[#991717] to-[#801313] bg-clip-text text-transparent">
-              손으로 느끼는 위로
-            </span>
+            화면이 아닌, <span className="bg-gradient-to-r from-[#991717] to-[#801313] bg-clip-text text-transparent">손으로 느끼는 위로</span>
           </h1>
+
 
           <div className="space-y-4 md:space-y-6 animate-reveal" style={{ animationDelay: '0.3s' }}>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed word-keep max-w-3xl mx-auto font-light">
-              편지는 꺼내 읽는 순간과,<br className="sm:hidden" /> 남겨두었다가 다시 읽는 순간까지,<br />
-              <span className="font-semibold text-gray-800">두 번의 감동을 줍니다.</span>
+              편지는 꺼내 읽는 순간과, 남겨두었다가 다시 읽는 순간까지, <span className="font-semibold text-gray-800">두 번의 감동을 줍니다.</span>
             </p>
 
             <p className="text-base md:text-lg text-gray-500 leading-relaxed word-keep max-w-2xl mx-auto font-normal">
-              하루편지는 천천히 다가와,<br className="sm:hidden" /> 마음 속에 오래 머무는 편지입니다.<br className="hidden sm:block" />
-              말보다 느린 방식이지만,<br className="sm:hidden" /> 오래 기억되고 마음에 남는 방식으로 위로를 전합니다.
+              하루편지는 천천히 다가와, 마음 속에 오래 머무는 편지입니다.<br></br> 말보다 느린 방식이지만, 오래 기억되고 마음에 남는 방식으로 위로를 전합니다.
             </p>
           </div>
 
@@ -96,9 +92,7 @@ export default function OndayContent({ adminState }: OndayContentProps) {
                 편지는 그 자체로<br className="sm:hidden" /> 충분합니다.
               </h2>
               <p className="text-[17px] md:text-xl text-gray-600 leading-[1.7] word-keep max-w-3xl mx-auto font-light">
-                하루편지는 불필요한 장식이나 구성 없이,<br className="sm:hidden" /> 오직 편지 본연의 가치에 집중합니다.<br />
-                손끝으로 글을 읽고,<br className="sm:hidden" /> 때로는 접어두었다가 다시 꺼내는 경험 속에서<br className="hidden sm:block" />
-                <span className="font-semibold text-gray-800">마음은 두 번 감동합니다.</span>
+                하루편지는 불필요한 장식이나 구성 없이, 오직 편지 본연의 가치에 집중합니다. 손끝으로 글을 읽고, 때로는 접어두었다가 다시 꺼내는 경험 속에서 <span className="font-semibold text-gray-800">마음은 두 번 감동합니다.</span>
               </p>
             </div>
 

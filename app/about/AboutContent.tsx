@@ -58,7 +58,7 @@ export default function AboutContent() {
             <div className="space-y-8">
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">아날로그의 가치를<br /><span className="text-burgundy-400">현대적으로</span> 재해석합니다</h2>
               <p className="text-gray-300 text-lg leading-relaxed">유어포스트는 전통적인 편지의 감동은 그대로 유지하면서, 현대인의 라이프스타일에 맞는 새로운 경험을 설계합니다. 기술은 수단일 뿐, 본질은 언제나 &apos;마음&apos;입니다.</p>
-              <div className="flex items-center gap-4"><Target size={24} className="text-burgundy-400" /><span className="text-lg">2026년 목표: 10만 통의 진심 전달</span></div>
+              <div className="flex items-center gap-4"><Target size={24} className="text-burgundy-400" /><span className="text-lg">2026년 목표: N/A</span></div>
             </div>
             <div className="bg-white/5 rounded-3xl p-12 border border-white/10 flex items-center justify-center">
               <Mail size={100} className="text-burgundy-400 opacity-50" />

@@ -18,22 +18,22 @@ export default function HeartsendContent({ adminState }: HeartsendContentProps) 
 
   return (
     <div className="animate-reveal">
-      {/* 히어로 */}
-      <section className="min-h-[80vh] flex flex-col justify-center items-center px-6 text-center bg-cream pt-16 pb-20">
-        <div className="max-w-2xl mx-auto space-y-5">
-          <span className="tag-pill bg-burgundy-600 text-white border-burgundy-600"><Heart size={14} /> 맞춤 편지 대필</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-charcoal word-keep">
-            마음은 있는데<br />글이 안 써져요
+      {/* 히어로 - 아날로그 감성 배경으로 복구 */}
+      <section className="min-h-[85vh] flex flex-col justify-center items-center px-6 text-center bg-[#FCF9F5] relative overflow-hidden pt-16 pb-20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-burgundy-50/50 rounded-full blur-[100px] -z-10" />
+        <div className="max-w-2xl mx-auto space-y-8 relative z-10">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-stone-200 rounded-full text-xs font-bold text-[#991717] uppercase tracking-wider shadow-sm"><Heart size={14} /> Premium Ghostwriting</span>
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.2] text-[#1D1D1F] word-keep">
+            마음은 가득한데,<br /><span className="text-[#991717]">글로 적기 어렵다면</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed word-keep pt-2">
-            머릿속에 하고 싶은 말은 많은데 막상 적으려니까 막막하죠.<br className="hidden sm:block" />
-            어떤 상황인지만 말씀해 주세요. 제가 문장으로 만들어 드릴게요.
+          <p className="text-lg md:text-xl text-stone-500 leading-relaxed word-keep font-light">
+            당신의 진심 어린 사연을 들려주세요. 전문 작가가 내용을 다듬고, 정성스러운 편지로 직접 써서 상대방의 우편함까지 전해드립니다.
           </p>
-          <div className="pt-5 flex flex-col sm:flex-row justify-center gap-3">
+          <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
             {heartsend.available ? (
               <>
-                <button type="button" onClick={() => document.getElementById('options')?.scrollIntoView({ behavior: 'smooth' })} className="btn-emotional-secondary">옵션 선택하기</button>
-                <button type="button" onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })} className="btn-emotional-primary">진행 과정 보기</button>
+                <button type="button" onClick={() => document.getElementById('options')?.scrollIntoView({ behavior: 'smooth' })} className="btn-emotional-primary px-10 py-4 text-lg">옵션 선택하기</button>
+                <button type="button" onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })} className="btn-emotional-secondary px-10 py-4 text-lg">진행 과정 보기</button>
               </>
             ) : (
               <div className="bg-gray-100 text-gray-500 px-8 py-4 rounded-2xl font-medium">지금은 대기 신청만 가능해요</div>
@@ -123,8 +123,8 @@ export default function HeartsendContent({ adminState }: HeartsendContentProps) 
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1D1D1F] mb-4">하트센드가 뭐예요?</h2>
             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-              편지 쓰고 싶은데 뭘 어떻게 써야 할지,만들어서 보낼지 모르겠을 때 저희한테 맡겨주세요.
-              상황이랑 마음만 알려주시면 그걸 예쁜 문장으로 바꿔서 실제 편지로 보내드려요.
+              편지 쓰고 싶은데 뭘 어떻게 써야 할지,만들어서 보낼지 모르겠을 때 저희한테 맡겨주세요.<br></br>
+              상황이랑 마음만 알려주시면 그걸 예쁜 문장으로 바꿔서 실제 편지로 보내드려요.<br></br>
               고백, 화해, 감사, 축하… 어떤 마음이든 괜찮아요.
             </p>
           </div>
@@ -243,62 +243,19 @@ export default function HeartsendContent({ adminState }: HeartsendContentProps) 
         </div>
       </section>
 
-      {/* 후기 */}
-      <section className="py-20 md:py-28 bg-[#FCF9F5]">
-        <div className="layout-container">
-          <div className="text-center mb-14">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1D1D1F] mb-3">이용 후기</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-            <div className="bg-white p-6 rounded-2xl border border-gray-100">
-              <Quote size={18} className="text-burgundy-200 mb-3" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                &quot;여자친구 생일에 편지 선물하고 싶었는데 뭘 써야 할지 몰라서 맡겼어요.
-                제가 한 말 그대로 예쁘게 써주셔서 진짜 감사했어요. 여친이 울었어요.&quot;
-              </p>
-              <p className="text-sm font-medium text-[#1D1D1F]">20대 남성 / 연인 생일 선물</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-gray-100">
-              <Quote size={18} className="text-burgundy-200 mb-3" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                &quot;엄마 환갑에 편지 드렸어요. 평소에 말로 못 하던 것들 다 담았는데,
-                엄마가 읽다가 우셨어요. 저도 울었고요. 돈으로 못 사는 선물이에요.&quot;
-              </p>
-              <p className="text-sm font-medium text-[#1D1D1F]">30대 여성 / 부모님 환갑</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-gray-100">
-              <Quote size={18} className="text-burgundy-200 mb-3" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                &quot;10년 넘게 연락 안 하던 친구한테 화해 편지 보냈어요.
-                저도 미안했는데 먼저 말 꺼내기 어려웠거든요. 답장 왔을 때 뭉클했어요.&quot;
-              </p>
-              <p className="text-sm font-medium text-[#1D1D1F]">30대 / 오래된 친구와 화해</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl border border-gray-100">
-              <Quote size={18} className="text-burgundy-200 mb-3" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                &quot;퇴사하시는 팀장님께 감사 편지 드렸어요. 직접 쓰기엔 쑥스럽고
-                뭘 써야 할지 몰라서요. 좋아하셨다고 나중에 연락 오셨어요.&quot;
-              </p>
-              <p className="text-sm font-medium text-[#1D1D1F]">20대 직장인 / 퇴사 인사</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-20 md:py-28 bg-[#1D1D1F]">
         <div className="layout-container text-center max-w-2xl mx-auto space-y-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white word-keep leading-snug">
-            한 통의 편지가<br />관계를 바꿀 수 있어요
+            지금 이 말을 하지않으면, 더 이상 전할 수 없을지도 모릅니다.
           </h2>
           <p className="text-white/60 text-base md:text-lg">
-            망설이지 마세요. 뭘 써야 할지 모르겠으면 일단 이야기해 보세요.<br className="hidden sm:block" />
-            같이 고민해 드릴게요.
+            망설이지 마세요. 마음을 전하는 가장 정중한 방법, 유어포스트가 함께합니다.
           </p>
           {heartsend.available ? (
-            <a href={heartsend.link} target="_blank" rel="noopener noreferrer" className="btn-emotional bg-white text-[#1D1D1F] hover:bg-gray-100 inline-flex font-semibold">
-              상담 신청하기 <ArrowRight size={18} />
+            <a href={heartsend.link} target="_blank" rel="noopener noreferrer" className="btn-emotional bg-white text-[#1D1D1F] hover:bg-gray-100 inline-flex font-semibold px-10 py-4 text-lg">
+              지금, 진심을 전해보세요 <ArrowRight size={18} />
             </a>
           ) : (
             <p className="text-white/50">현재 대기 신청만 받고 있어요.</p>

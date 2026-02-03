@@ -47,22 +47,27 @@ export default function CookieConsent() {
         }
 
         // 동의 여부 확인
-        // cache: 'no-store'를 추가하여 서버의 최신 상태를 항상 확인 (버그 수정)
+        // localStorage 우선 확인 (빠른 반응용)
+        const localConsent = localStorage.getItem('cookie-consented');
+        if (localConsent === 'true') {
+          setIsVisible(false);
+          trackPageView();
+          return;
+        }
+
         const res = await fetch('/api/consent/check', {
           cache: 'no-store'
         });
         if (res.ok) {
           const { consented } = await res.json();
           if (consented) {
-            // 이미 동의함 - 페이지뷰만 추적
+            localStorage.setItem('cookie-consented', 'true'); // 로컬 동기화
             trackPageView();
             setIsVisible(false);
           } else {
-            // 동의 안함 - 배너 표시
             setIsVisible(true);
           }
         } else {
-          // API 오류 시 배너 표시
           setIsVisible(true);
         }
       } catch {
@@ -89,6 +94,7 @@ export default function CookieConsent() {
 
       // 동의 후 페이지뷰도 추적
       trackPageView();
+      localStorage.setItem('cookie-consented', 'true');
     } catch {
       // 실패해도 무시
     } finally {

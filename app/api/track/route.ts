@@ -19,18 +19,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 500 });
     }
 
-    // Supabase 클라이언트 생성
+    // Supabase 클라이언트 생성 (SERVICE_ROLE_KEY 강제 사용)
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // 요청 본문 파싱
     const body = await request.json();
     const { action, page, consentMarketing, consentAnalytics } = body;
 
-    // IP 주소 추출 및 익명화 (GDPR/PIPA 준수)
-    const ip = anonymizeIP(extractIP(request.headers));
-
     // User Agent 추출
     const userAgent = request.headers.get('user-agent') || '';
+
+    // IP 주소 추출 및 익명화 (GDPR/PIPA 준수)
+    const ip = anonymizeIP(extractIP(request.headers));
 
     // 접근 로그 저장
     const { error } = await supabase.from('access_logs').insert([

@@ -216,20 +216,19 @@ export default function AdminPage() {
   };
 
   /**
-   * 상태의 특정 필드를 업데이트하는 유틸리티 (불변성 유지)
+   * 필드 업데이트 유틸리티
+   * 중첩된 객체 구조('banner.top.message' 등)의 상태를 불변성을 유지하며 업데이트함
    */
   const updateField = useCallback((path: string, value: any) => {
     setAdminState((prev: any) => {
-      // 얕은 복사 대신 필요한 부분만 깊은 복사 처리 (최적화)
       const newState = { ...prev };
       const keys = path.split('.');
       let current: any = newState;
 
       for (let i = 0; i < keys.length - 1; i++) {
         const key = keys[i];
-        // 해당 키가 없거나 객체가 아니면 빈 객체로 초기화
         if (!current[key] || typeof current[key] !== 'object') current[key] = {};
-        current[key] = { ...current[key] }; // 불변성 유지를 위한 얕은 복사
+        current[key] = { ...current[key] }; // 불변성 유지 (Shallow copy)
         current = current[key];
       }
       current[keys[keys.length - 1]] = value;
@@ -481,26 +480,118 @@ export default function AdminPage() {
           <AdminCard title="배너 및 팝업 제어" icon={<Bell className="text-[#E62727]" />}>
             <div className="space-y-8">
               {/* 상단 띠배너 설정 */}
-              <div className="p-6 bg-[#fdfaf7] rounded-3xl space-y-4">
-                <ToggleGroup label="상단 띠 배너 활성" active={adminState.banner?.showTop ?? false} onToggle={() => updateField('banner.showTop', !adminState.banner?.showTop)} />
-                <InputGroup label="배너 메시지" value={adminState.banner?.top?.message ?? ''} onChange={(v: any) => updateField('banner.top.message', v)} />
-                <InputGroup label="연결 링크" value={adminState.banner?.top?.link ?? ''} onChange={(v: any) => updateField('banner.top.link', v)} />
+              <div className="p-8 bg-[#fdfaf7] rounded-[40px] space-y-6 border border-gray-100">
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="text-sm font-black text-charcoal">📢 상단 띠 배너 설정</h4>
+                  <ToggleGroup label="활성" active={adminState.banner?.showTop ?? false} onToggle={() => updateField('banner.showTop', !adminState.banner?.showTop)} />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <InputGroup label="배너 메시지" value={adminState.banner?.top?.message ?? ''} onChange={(v: any) => updateField('banner.top.message', v)} />
+                  <div className="space-y-4">
+                    <ToggleGroup label="링크 버튼 사용" active={adminState.banner?.top?.showButton ?? false} onToggle={() => updateField('banner.top.showButton', !(adminState.banner?.top?.showButton ?? false))} />
+                    {adminState.banner?.top?.showButton && (
+                      <div className="flex gap-4 p-4 bg-white rounded-2xl border border-gray-100">
+                        <button
+                          onClick={() => updateField('banner.top.linkType', 'internal')}
+                          className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${adminState.banner?.top?.linkType === 'internal' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >내부 공지</button>
+                        <button
+                          onClick={() => updateField('banner.top.linkType', 'external')}
+                          className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${adminState.banner?.top?.linkType === 'external' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >외부 링크</button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {adminState.banner?.top?.showButton && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <InputGroup label="버튼 텍스트" value={adminState.banner?.top?.buttonText ?? '더 알아보기'} onChange={(v: any) => updateField('banner.top.buttonText', v)} />
+                    <InputGroup
+                      label={adminState.banner?.top?.linkType === 'internal' ? "공지 ID (숫자)" : "URL"}
+                      value={adminState.banner?.top?.link ?? ''}
+                      onChange={(v: any) => updateField('banner.top.link', v)}
+                    />
+                  </div>
+                )}
                 <ColorPicker label="테마 색상" value={adminState.banner?.top?.color} onChange={(c) => updateField('banner.top.color', c)} />
               </div>
 
               {/* 좌측 하단 배너 설정 */}
-              <div className="p-6 bg-[#fdfaf7] rounded-3xl space-y-4">
-                <ToggleGroup label="좌측 하단 배너 활성" active={adminState.banner?.showBottom ?? false} onToggle={() => updateField('banner.showBottom', !(adminState.banner?.showBottom ?? false))} />
-                <InputGroup label="배너 메시지" value={adminState.banner?.bottom?.message ?? ''} onChange={(v: any) => updateField('banner.bottom.message', v)} />
-                <InputGroup label="연결 링크" value={adminState.banner?.bottom?.link ?? ''} onChange={(v: any) => updateField('banner.bottom.link', v)} />
+              <div className="p-8 bg-[#fdfaf7] rounded-[40px] space-y-6 border border-gray-100">
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="text-sm font-black text-charcoal">📍 좌측 하단 Floating 공지</h4>
+                  <ToggleGroup label="활성" active={adminState.banner?.showBottom ?? false} onToggle={() => updateField('banner.showBottom', !(adminState.banner?.showBottom ?? false))} />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <InputGroup label="공지 메시지" value={adminState.banner?.bottom?.message ?? ''} onChange={(v: any) => updateField('banner.bottom.message', v)} />
+                  <div className="space-y-4">
+                    <ToggleGroup label="링크 버튼 사용" active={adminState.banner?.bottom?.showButton ?? false} onToggle={() => updateField('banner.bottom.showButton', !(adminState.banner?.bottom?.showButton ?? false))} />
+                    {adminState.banner?.bottom?.showButton && (
+                      <div className="flex gap-4 p-4 bg-white rounded-2xl border border-gray-100">
+                        <button
+                          onClick={() => updateField('banner.bottom.linkType', 'internal')}
+                          className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${adminState.banner?.bottom?.linkType === 'internal' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >내부 공지</button>
+                        <button
+                          onClick={() => updateField('banner.bottom.linkType', 'external')}
+                          className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all ${adminState.banner?.bottom?.linkType === 'external' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >외부 링크</button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {adminState.banner?.bottom?.showButton && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <InputGroup label="버튼 텍스트" value={adminState.banner?.bottom?.buttonText ?? '자세히 보기'} onChange={(v: any) => updateField('banner.bottom.buttonText', v)} />
+                    <InputGroup
+                      label={adminState.banner?.bottom?.linkType === 'internal' ? "공지 ID (숫자)" : "URL"}
+                      value={adminState.banner?.bottom?.link ?? ''}
+                      onChange={(v: any) => updateField('banner.bottom.link', v)}
+                    />
+                  </div>
+                )}
                 <ColorPicker label="테마 색상" value={adminState.banner?.bottom?.color} onChange={(c) => updateField('banner.bottom.color', c)} />
               </div>
 
               {/* 팝업 설정 */}
-              <div className="p-6 bg-[#fdfaf7] rounded-3xl space-y-4">
-                <ToggleGroup label="중앙 팝업 활성" active={adminState.banner?.showPopup ?? false} onToggle={() => updateField('banner.showPopup', !(adminState.banner?.showPopup ?? false))} />
+              <div className="p-8 bg-[#fdfaf7] rounded-[40px] space-y-6 border border-gray-100">
+                <div className="flex justify-between items-center mb-2">
+                  <h4 className="text-sm font-black text-charcoal">🖼️ 중앙 팝업 설정</h4>
+                  <ToggleGroup label="활성" active={adminState.banner?.showPopup ?? false} onToggle={() => updateField('banner.showPopup', !(adminState.banner?.showPopup ?? false))} />
+                </div>
+
                 <InputGroup label="팝업 제목" value={adminState.banner?.popup?.title ?? ''} onChange={(v: any) => updateField('banner.popup.title', v)} />
-                <InputGroup label="팝업 메시지" value={adminState.banner?.popup?.message ?? ''} onChange={(v: any) => updateField('banner.popup.message', v)} />
+                <MarkdownEditor label="팝업 본문" value={adminState.banner?.popup?.message ?? ''} onChange={(v: any) => updateField('banner.popup.message', v)} />
+
+                <div className="space-y-4">
+                  <ToggleGroup label="팝업 버튼 실행" active={adminState.banner?.popup?.showButton ?? false} onToggle={() => updateField('banner.popup.showButton', !(adminState.banner?.popup?.showButton ?? false))} />
+                  {adminState.banner?.popup?.showButton && (
+                    <div className="p-6 bg-white rounded-3xl border border-gray-100 space-y-4">
+                      <div className="flex gap-4 mb-4">
+                        <button
+                          onClick={() => updateField('banner.popup.linkType', 'internal')}
+                          className={`flex-1 py-3 rounded-xl font-bold text-xs transition-all ${adminState.banner?.popup?.linkType === 'internal' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >내부 공지로 이동</button>
+                        <button
+                          onClick={() => updateField('banner.popup.linkType', 'external')}
+                          className={`flex-1 py-3 rounded-xl font-bold text-xs transition-all ${adminState.banner?.popup?.linkType === 'external' ? 'bg-[#E62727] text-white' : 'bg-gray-100 text-gray-500'}`}
+                        >외부 링크 (URL)</button>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <InputGroup label="버튼 텍스트" value={adminState.banner?.popup?.buttonText ?? '자세히 보기'} onChange={(v: any) => updateField('banner.popup.buttonText', v)} />
+                        <InputGroup
+                          label={adminState.banner?.popup?.linkType === 'internal' ? "공지사항 ID (숫자)" : "이동 링크 URL"}
+                          value={adminState.banner?.popup?.link ?? ''}
+                          onChange={(v: any) => updateField('banner.popup.link', v)}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="pt-8 border-t border-gray-100 mt-8">
@@ -689,6 +780,7 @@ export default function AdminPage() {
           <div className="lg:col-span-1 space-y-4">
             <CategoryBtn active={editingCategory === 'brandStory'} onClick={() => setEditingCategory('brandStory')} label="브랜드 스토리" icon={<Sparkles size={18} />} />
             <CategoryBtn active={editingCategory === 'press'} onClick={() => setEditingCategory('press')} label="뉴스룸" icon={<Newspaper size={18} />} />
+            <CategoryBtn active={editingCategory === 'noticeBoard'} onClick={() => setEditingCategory('noticeBoard')} label="공지사항 게시판" icon={<Bell size={18} className="text-[#E62727]" />} />
             <CategoryBtn active={editingCategory === 'careers'} onClick={() => setEditingCategory('careers')} label="채용 및 협업" icon={<Briefcase size={18} />} />
             <CategoryBtn active={editingCategory === 'events'} onClick={() => setEditingCategory('events')} label="이벤트" icon={<Mail size={18} />} />
             <CategoryBtn active={editingCategory === 'faq'} onClick={() => setEditingCategory('faq')} label="자주 묻는 질문 (FAQ)" icon={<HelpCircle size={18} />} />

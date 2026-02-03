@@ -50,7 +50,7 @@ export default function Header(_props: HeaderProps) {
 
   return (
     <>
-      <nav className={`sticky top-0 w-full z-[100] h-14 md:h-16 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-sm' : 'bg-cream/90 backdrop-blur-lg'}`}>
+      <nav className={`sticky top-0 w-full z-[100] h-14 md:h-16 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-gray-100 shadow-sm' : 'bg-white border-b border-stone-100'}`}>
         <div className="layout-container h-full flex items-center justify-between">
           <Link href="/" className="outline-none" aria-label="홈으로 이동" onClick={closeMenu}>
             <Logo />
@@ -68,6 +68,7 @@ export default function Header(_props: HeaderProps) {
               <div className={`absolute top-14 left-1/2 -translate-x-1/2 w-56 bg-white rounded-2xl shadow-lg border border-gray-100 p-2 transition-all duration-200 ${isServiceOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
                 <DropdownItem title="하루편지" desc="월간 구독 편지" href="/ondaypost" onClick={closeMenu} />
                 <DropdownItem title="하트센드" desc="맞춤 편지 서비스" href="/heartsend" onClick={closeMenu} />
+                <DropdownItem title="이벤트" desc="특별한 소식" href="/event" onClick={closeMenu} />
                 <DropdownItem title="B2B" desc="기업 서비스" href="/b2b" onClick={closeMenu} />
               </div>
             </div>
@@ -127,6 +128,7 @@ export default function Header(_props: HeaderProps) {
                 <div className="space-y-1 pl-3">
                   <MobileSubItem title="하루편지" href="/ondaypost" onClick={closeMenu} />
                   <MobileSubItem title="하트센드" href="/heartsend" onClick={closeMenu} />
+                  <MobileSubItem title="이벤트" href="/event" onClick={closeMenu} />
                   <MobileSubItem title="B2B" href="/b2b" onClick={closeMenu} />
                 </div>
               </div>

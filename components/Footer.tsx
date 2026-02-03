@@ -65,6 +65,7 @@ export default function Footer({ adminState }: FooterProps) {
             <div className="flex flex-col gap-3 text-sm text-gray-400">
               <FooterLink href="/about">회사 소개</FooterLink>
               <FooterLink href="/press">뉴스룸</FooterLink>
+              <FooterLink href="/notice">공지사항</FooterLink>
               <FooterLink href="/careers">채용</FooterLink>
               <FooterLink href="/investor">IR / 투자</FooterLink>
               <FooterLink href={footerContactHref} external>문의하기</FooterLink>
@@ -87,6 +88,7 @@ export default function Footer({ adminState }: FooterProps) {
               <FooterLink href="/heartsend">하트센드</FooterLink>
               <FooterLink href="/b2b">B2B</FooterLink>
               <FooterLink href="/about">회사 소개</FooterLink>
+              <FooterLink href="/notice">공지사항</FooterLink>
               <FooterLink href="/careers">채용</FooterLink>
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-xs text-gray-500">

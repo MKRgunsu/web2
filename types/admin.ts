@@ -45,19 +45,6 @@ export interface AdminState {
     };
     b2b?: { available?: boolean; email?: string; info?: string };
   };
-  banner?: {
-    showTop?: boolean;
-    top?: { message?: string; link?: string; color?: string; type?: 'none' | 'normal' | 'trip' | 'cs' | 'temp' };
-    showBottom?: boolean;
-    bottom?: { message?: string; link?: string; color?: string };
-    showPopup?: boolean;
-    popup?: { title?: string; message?: string };
-    lastModified?: string;
-  };
-  cookieSettings?: {
-    enabled?: boolean;
-    mode?: 'once' | 'always' | 'none';
-  };
   content?: {
     brandStory?: ContentItem[];
     press?: ContentItem[];
@@ -65,6 +52,42 @@ export interface AdminState {
     events?: ContentItem[];
     faq?: ContentItem[];
     ir?: ContentItem[];
+    noticeBoard?: ContentItem[]; // 신규 공지사항 게시판
+  };
+  cookieSettings?: {
+    enabled?: boolean;
+    mode?: 'once' | 'always' | 'none';
+  };
+  banner?: {
+    showTop?: boolean;
+    top?: {
+      message?: string;
+      link?: string;
+      linkType?: 'internal' | 'external';
+      buttonText?: string;
+      showButton?: boolean;
+      color?: string;
+      type?: 'none' | 'normal' | 'trip' | 'cs' | 'temp'
+    };
+    showBottom?: boolean;
+    bottom?: {
+      message?: string;
+      link?: string;
+      linkType?: 'internal' | 'external';
+      buttonText?: string;
+      showButton?: boolean;
+      color?: string;
+    };
+    showPopup?: boolean;
+    popup?: {
+      title?: string;
+      message?: string;
+      link?: string;
+      linkType?: 'internal' | 'external';
+      buttonText?: string;
+      showButton?: boolean;
+    };
+    lastModified?: string;
   };
   cta?: {
     mainContactEmail?: string;

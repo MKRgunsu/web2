@@ -28,7 +28,7 @@ export async function GET(request: Request) {
       );
     }
 
-    // Supabase 클라이언트 생성
+    // Supabase 클라이언트 생성 (SERVICE_ROLE_KEY 강제 사용)
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // IP 주소 추출 및 익명화

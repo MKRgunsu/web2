@@ -46,26 +46,31 @@ export default function Home({ adminState }: HomeProps) {
         </div>
       )}
 
-      {/* 히어로 */}
-      <section className="min-h-[85vh] flex flex-col justify-center items-center px-5 text-center bg-cream pt-10 pb-16">
-        <div className="max-w-2xl mx-auto space-y-5">
-          <p className="text-[#6B5B4F] text-sm font-medium tracking-wide">
+      {/* 히어로 - 유저 요청 카피 적용 */}
+      <section className="min-h-[90vh] flex flex-col justify-center items-center px-6 text-center bg-[#FCF9F5] relative overflow-hidden">
+        {/* Subtle background element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-burgundy-50/30 rounded-full blur-[120px] -z-10" />
+
+        <div className="max-w-3xl mx-auto space-y-8 relative z-10">
+          <p className="text-[#6B5B4F] text-sm md:text-base font-medium tracking-wide">
             손으로 쓰고, 마음으로 전하는
           </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.2] text-[#3D3835] word-keep">
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] text-[#3D3835] word-keep">
             요즘 세상에 편지라니,<br />
-            <span className="text-burgundy-700">그게 좋더라고요.</span>
+            <span className="text-[#991717]">그게 좋더라고요.</span>
           </h1>
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-md mx-auto word-keep pt-1">
-            카톡은 좀 가볍잖아요. 전화하긴 부담스럽고.<br className="hidden sm:block" />
-            그래서 편지예요. 천천히, 제대로 전하고 싶을 때.
+
+          <p className="text-lg md:text-xl text-stone-500 leading-relaxed max-w-xl mx-auto word-keep font-light">
+            카톡은 좀 가볍잖아요. 전화하긴 부담스럽고. <br></br>그래서 편지예요. 천천히, 제대로 전하고 싶을 때.
           </p>
-          <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
-            <Link href="/ondaypost" className="btn-emotional-primary">
-              서비스 둘러보기
+
+          <div className="pt-6 flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/ondaypost" className="btn-emotional-primary px-10 py-4 text-lg">
+              하루편지 시작하기
             </Link>
-            <Link href="/b2b" className="btn-emotional-secondary">
-              기업 도입 문의
+            <Link href="/b2b" className="btn-emotional-secondary px-10 py-4 text-lg">
+              비즈니스 문의하기
             </Link>
           </div>
         </div>
@@ -77,18 +82,17 @@ export default function Home({ adminState }: HomeProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-5">
               <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight leading-snug text-[#3D3835] word-keep">
-                하루에 메시지 몇 개 받으세요?<br />
-                근데 기억에 남는 건요?
+                하루에 메시지 몇 개 받으세요? <br></br> 근데 기억에 남는 건요?
               </h2>
               <div className="space-y-4 text-sm md:text-base text-gray-600 leading-relaxed word-keep">
                 <p>
-                  아침에 눈뜨면 알림이 쌓여있고, 읽다 보면 또 새 알림이 와요. 답장하고 나면 금방 잊어버리죠. 그게 요즘 소통이에요.
+                  아침에 눈뜨면 알림이 쌓여있고, 읽다 보면 또 새 알림이 와요.<br></br> 답장하고 나면 금방 잊어버리죠. 그게 요즘 소통이에요.
                 </p>
                 <p>
                   편지는 다르더라고요. 쓰는 데 시간이 걸리니까 대충 못 써요. 받는 사람도 함부로 안 열어요. 뜯는 순간부터 이미 특별한 거예요.
                 </p>
                 <p className="text-burgundy-700 font-medium">
-                  마지막으로 손편지 받아본 게 언제예요? 그때 기분, 아직도 기억나지 않아요?
+                  마지막으로 편지 받아본 게 언제예요? 그때 기분, 아직도 기억나지 않아요?
                 </p>
               </div>
             </div>
@@ -103,105 +107,176 @@ export default function Home({ adminState }: HomeProps) {
         </div>
       </section>
 
-      {/* 숫자로 보는 유어포스트 */}
-      <section className="py-12 md:py-16 bg-[#494239]">
+      {/* 숫자로 보는 유어포스트 - 디자인 디테일 상향 */}
+      <section className="py-16 md:py-24 bg-white border-y border-stone-100">
         <div className="layout-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center text-white">
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-[#F5F0E8]">2025</p>
-              <p className="text-xs md:text-sm text-white/70 mt-1">서비스 시작</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+            <div className="space-y-2">
+              <p className="text-xs font-black text-stone-300 uppercase tracking-widest">Since</p>
+              <p className="text-3xl md:text-5xl font-bold text-[#1D1D1F]">2025</p>
+              <p className="text-sm text-stone-500 font-medium tracking-tight">서비스 시작</p>
             </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-[#F5F0E8]">100%</p>
-              <p className="text-xs md:text-sm text-white/70 mt-1">진심전달</p>
+            <div className="space-y-2">
+              <p className="text-xs font-black text-stone-300 uppercase tracking-widest">Promise</p>
+              <p className="text-3xl md:text-5xl font-bold text-[#991717]">100%</p>
+              <p className="text-sm text-stone-500 font-medium tracking-tight">진심전달</p>
             </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-[#F5F0E8]">3일</p>
-              <p className="text-xs md:text-sm text-white/70 mt-1">평균 배송</p>
+            <div className="space-y-2">
+              <p className="text-xs font-black text-stone-300 uppercase tracking-widest">Speed</p>
+              <p className="text-3xl md:text-5xl font-bold text-[#991717]">3일</p>
+              <p className="text-sm text-stone-500 font-medium tracking-tight">평균 배송</p>
             </div>
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-[#F5F0E8]">전국</p>
-              <p className="text-xs md:text-sm text-white/70 mt-1">어디든 배달</p>
+            <div className="space-y-2">
+              <p className="text-xs font-black text-stone-300 uppercase tracking-widest">Reach</p>
+              <p className="text-3xl md:text-5xl font-bold text-[#1D1D1F]">전국</p>
+              <p className="text-sm text-stone-500 font-medium tracking-tight">어디든 배달</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 하루편지 소개 */}
-      <section className="py-20 md:py-28 bg-[#FCF9F5]">
+      {/* 하루편지 소개 - OndayContent와 동일한 메시지 적용 */}
+      <section className="py-20 md:py-32 bg-[#FAF7F2]">
         <div className="layout-container">
-          <div className="bg-white rounded-3xl p-6 md:p-10 lg:p-12 border border-gray-100 shadow-sm">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-              <div className="bg-gradient-to-br from-burgundy-50 to-burgundy-100/30 rounded-2xl aspect-[4/3] flex items-center justify-center">
-                <Mail size={80} className="text-burgundy-300" strokeWidth={1} />
-              </div>
-              <div className="space-y-5">
-                <span className="tag-pill">월간 구독 서비스</span>
-                <h3 className="text-2xl md:text-3xl font-bold leading-snug text-[#1D1D1F] word-keep">
-                  한 달에 한 번, 나한테 오는 편지
+          <div className="bg-white rounded-[40px] p-8 md:p-16 border border-stone-100 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-burgundy-50/50 rounded-full blur-3xl -mr-32 -mt-32" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-burgundy-50 rounded-full">
+                  <Sparkles size={14} className="text-[#991717]" />
+                  <span className="text-xs md:text-sm font-bold text-burgundy-800 uppercase tracking-wider">OndayPost</span>
+                </div>
+                <h3 className="text-[32px] md:text-[48px] font-bold leading-[1.15] text-[#1D1D1F] word-keep">
+                  화면이 아닌,<br></br> <span className="text-[#991717]">손으로 느끼는 위로</span>
                 </h3>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed word-keep">
-                  매달 우편함에 편지가 와요. 그 달의 테마에 맞춰 작가님이 쓴 에세이랑, 예쁜 엽서가 들어있어요. 누가 보내는 게 아니라 나한테 오는 거라 더 좋아요.
+                <div className="space-y-4">
+                  <p className="text-lg md:text-xl text-stone-700 font-medium leading-relaxed word-keep">
+                    편지는 꺼내 읽는 순간과, 남겨두었다가 다시 읽는 순간까지, <span className="text-[#991717]">두 번의 감동을 줍니다.</span>
+                  </p>
+                  <p className="text-base text-stone-500 leading-relaxed word-keep">
+                    하루편지는 천천히 다가와, 마음 속에 오래 머무는 편지입니다. 말보다 느린 방식이지만, 오래 기억되고 마음에 남는 방식으로 위로를 전합니다.
+                  </p>
+                </div>
+                <div className="pt-2">
+                  <Link href="/ondaypost" className="btn-emotional-primary inline-flex">
+                    하루편지 시작하기 <ArrowRight size={20} className="ml-2" />
+                  </Link>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                {[
+                  { title: "매주 정기 발송", desc: "한 주에 한 번, 정성을 담아 발송합니다." },
+                  { title: "예측할 수 없는 도착", desc: "언제 올지 모르는 기대감이 일상에 활력을 줍니다." },
+                  { title: "펼치는 순간의 온기", desc: "봉투를 열고 글을 마주할 때 비로소 전해지는 진심." }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-4 p-6 bg-burgundy-50/30 rounded-2xl border border-burgundy-100/20">
+                    <CheckCircle size={20} className="text-[#991717] mt-1 shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-[#1D1D1F] mb-1">{item.title}</h4>
+                      <p className="text-sm text-stone-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 하트센드 소개 - 서비스 본질 명확화 */}
+      <section className="py-20 md:py-32 bg-white">
+        <div className="layout-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-2 lg:order-1 relative">
+              <div className="bg-[#FAF7F2] rounded-[40px] p-8 md:p-14 border border-stone-100 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-32 h-32 bg-burgundy-100/20 rounded-full blur-2xl -ml-16 -mt-16" />
+                <div className="space-y-8 relative z-10 text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-stone-200 rounded-full">
+                    <Heart size={14} className="text-[#991717]" />
+                    <span className="text-xs md:text-sm font-bold text-stone-600 uppercase tracking-wider">Heartsend</span>
+                  </div>
+                  <h3 className="text-[32px] md:text-[44px] font-bold leading-[1.2] text-[#1D1D1F] word-keep">
+                    마음은 가득한데,<br></br> <span className="text-[#991717]">글로 적기 어렵다면</span>
+                  </h3>
+                  <p className="text-lg text-stone-600 leading-relaxed word-keep">
+                    당신의 진심 어린 사연을 들려주세요. 전문 작가가 내용을 다듬고, 정성스러운 편지로 직접 써서 상대방의 우편함까지 전해드립니다.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4 pt-4">
+                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                      <p className="text-xs text-stone-400 mb-1">Step 01</p>
+                      <p className="font-bold text-stone-800">사연 상담</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                      <p className="text-xs text-stone-400 mb-1">Step 02</p>
+                      <p className="font-bold text-stone-800">맞춤 대필</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                      <p className="text-xs text-stone-400 mb-1">Step 03</p>
+                      <p className="font-bold text-stone-800">수기 제작</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-2xl shadow-sm border border-stone-100">
+                      <p className="text-xs text-stone-400 mb-1">Step 04</p>
+                      <p className="font-bold text-stone-800">신속 발송</p>
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <Link href="/heartsend" className="btn-emotional-primary inline-flex">
+                      하트센드 신청하기 <ArrowRight size={20} className="ml-2" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 space-y-8">
+              <div className="space-y-4">
+                <span className="text-[#991717] font-black text-[10px] tracking-[0.3em] uppercase">Premium Ghostwriting</span>
+                <h4 className="text-2xl md:text-3xl font-bold text-stone-800 leading-tight">
+                  고백, 화해, 그리고 감사<br />
+                  전하지 못한 마음을 대신 씁니다.
+                </h4>
+                <p className="text-stone-500 leading-relaxed word-keep">
+                  첫 문장을 떼기 힘든 그 마음을 누구보다 잘 알기에, 유어포스트가 함께 고민하고 문장 하나하나에 온기를 담습니다. 받는 분의 기억에 영원히 남을 선물을 만들어보세요.
                 </p>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-burgundy-700 flex-shrink-0 mt-0.5" />
-                    <span>매달 다른 작가의 에세이 - 위로가 되기도 하고, 생각할 거리를 주기도 해요</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-burgundy-700 flex-shrink-0 mt-0.5" />
-                    <span>계절 한정 엽서 - 방에 붙여놓거나 누군가에게 보내기 좋아요</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle size={18} className="text-burgundy-700 flex-shrink-0 mt-0.5" />
-                    <span>답장용 편지지 - 읽다 보면 나도 누군가에게 쓰고 싶어지거든요</span>
-                  </li>
-                </ul>
-                <Link href="/ondaypost" className="btn-emotional-primary inline-flex mt-3">
-                  하루편지 자세히 보기 <ArrowRight size={18} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 회사 소개 섹션 (후기 대신 추가) */}
+      <section className="py-20 md:py-32 bg-[#FAF7F2]">
+        <div className="layout-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-stone-200 rounded-full text-stone-500 text-xs font-bold tracking-widest uppercase shadow-sm">
+                About YourPost
+              </div>
+              <h2 className="text-[32px] md:text-[44px] font-bold text-[#1D1D1F] leading-tight tracking-tight word-keep">
+                디지털 시대에도<br />
+                <span className="text-[#991717]">변하지 않는 진심</span>이 있습니다.
+              </h2>
+              <p className="text-lg text-stone-600 leading-relaxed word-keep">
+                유어포스트는 빠르게 스쳐 지나가는 메시지 대신, 손끝으로 느껴지는 종이의 질감과 정성이 담긴 글씨를 통해 마음을 전합니다. <br /><br />
+                우리는 기술을 통해 편리의 도구를 만들기보다, 사람과 사람 사이의 온기를 전하는 가장 정중한 방법을 제안합니다.
+              </p>
+              <div className="pt-4">
+                <Link href="/about" className="inline-flex items-center gap-2 text-sm font-bold text-[#1D1D1F] hover:text-[#991717] transition-colors group">
+                  브랜드 스토리 자세히 보기 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 하트센드 소개 */}
-      <section className="py-16 md:py-24 bg-[#8d0404]">
-        <div className="layout-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-5 order-2 lg:order-1">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F5F0E8]/20 text-[#F5F0E8] text-xs font-medium tracking-wide rounded-full">
-                맞춤 편지 대필
-              </span>
-              <h3 className="text-xl md:text-2xl font-bold leading-snug word-keep text-[#F5F0E8]">
-                쓰고 싶은 말은 많은데,<br />막상 펜 들면 막막하죠
-              </h3>
-              <p className="text-[#F5F0E8]/80 text-sm md:text-base leading-relaxed word-keep">
-                저도 그래요. 머릿속엔 하고 싶은 말이 가득한데 막상 적으려니까 첫 문장부터 막혀요. <br/>
-                그럴 때 저희한테 말씀해 주세요.
-              </p>
-              <div className="space-y-2 pt-2">
-                <p className="text-[#F5F0E8]/90 text-xs md:text-sm font-medium">이런 분들이 찾아오세요</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1.5 bg-[#F5F0E8]/15 rounded-full text-xs text-[#F5F0E8]/80">고백</span>
-                  <span className="px-3 py-1.5 bg-[#F5F0E8]/15 rounded-full text-xs text-[#F5F0E8]/80">화해</span>
-                  <span className="px-3 py-1.5 bg-[#F5F0E8]/15 rounded-full text-xs text-[#F5F0E8]/80">감사</span>
-                  <span className="px-3 py-1.5 bg-[#F5F0E8]/15 rounded-full text-xs text-[#F5F0E8]/80">축하</span>
-                </div>
+            <div className="relative aspect-square md:aspect-[4/3] bg-white rounded-[40px] border border-stone-100 shadow-xl overflow-hidden flex items-center justify-center p-12">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#991717]/5 to-transparent"></div>
+              <Mail size={120} className="text-[#991717]/20 relative z-10" strokeWidth={1} />
+              <div className="absolute bottom-10 left-10 right-10 p-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/40 shadow-sm">
+                <p className="text-stone-700 font-medium text-sm leading-relaxed italic">
+                  &quot;편지는 한 번 읽고 끝나지 않습니다. 시간이 흐른 뒤 다시 꺼내 읽을 때 비로소 진정한 위로가 완성됩니다.&quot;
+                </p>
               </div>
-              <Link href="/heartsend" className="btn-emotional bg-[#F5F0E8] text-[#6B5B4F] hover:bg-cream inline-flex mt-3 font-semibold">
-                하트센드 보기 <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div className="bg-[#F5F0E8]/10 rounded-2xl aspect-[4/3] flex items-center justify-center border border-[#F5F0E8]/20 order-1 lg:order-2">
-              <Heart size={64} className="text-[#F5F0E8]/70" fill="currentColor" />
             </div>
           </div>
         </div>
       </section>
-
-      {/* 편지의 가치 */}
       <section className="py-20 md:py-28 bg-white">
         <div className="layout-container">
           <div className="text-center mb-14">
@@ -210,86 +285,45 @@ export default function Home({ adminState }: HomeProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
-              <div className="w-12 h-12 bg-[#F5F0E8] text-[#6B5B4F] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-burgundy-50 text-burgundy-600 rounded-xl flex items-center justify-center">
                 <Clock size={22} />
               </div>
-              <h4 className="text-lg font-bold text-[#1D1D1F]">기다림의 설렘</h4>
+              <h4 className="text-lg font-bold text-[#1D1D1F]">매주 정기 발송</h4>
               <p className="text-gray-600 text-sm leading-relaxed">
-                카톡은 보내면 바로 읽히잖아요. 편지는 며칠을 기다려요. 그 기다림이 기대가 되고, 도착하면 더 반가워요.
+                한 주에 한 번, 정성을 담아 발송합니다.
               </p>
             </div>
             <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
-              <div className="w-12 h-12 bg-[#F5F0E8] text-[#6B5B4F] rounded-xl flex items-center justify-center">
-                <MessageSquare size={22} />
-              </div>
-              <h4 className="text-lg font-bold text-[#1D1D1F]">정성의 무게</h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                종이 꺼내고, 펜 들고, 한 글자씩 쓰는 거잖아요. 그 시간 동안 상대방 생각만 하는 거예요. 그게 느껴져요.
-              </p>
-            </div>
-            <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
-              <div className="w-12 h-12 bg-[#F5F0E8] text-[#6B5B4F] rounded-xl flex items-center justify-center">
-                <Gift size={22} />
-              </div>
-              <h4 className="text-lg font-bold text-[#1D1D1F]">실물의 감동</h4>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                손으로 만지고, 냄새 맡고, 서랍에 넣어두는 거예요. 몇 년 뒤에 우연히 발견하면 그때 기분이 다시 살아나요.
-              </p>
-            </div>
-            <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
-              <div className="w-12 h-12 bg-[#F5F0E8] text-[#6B5B4F] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-burgundy-50 text-burgundy-600 rounded-xl flex items-center justify-center">
                 <Sparkles size={22} />
+              </div>
+              <h4 className="text-lg font-bold text-[#1D1D1F]">예측할 수 없는 도착</h4>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                언제 올지 모르는 기대감이 일상에 활력을 줍니다.
+              </p>
+            </div>
+            <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
+              <div className="w-12 h-12 bg-burgundy-50 text-burgundy-600 rounded-xl flex items-center justify-center">
+                <Heart size={22} />
+              </div>
+              <h4 className="text-lg font-bold text-[#1D1D1F]">펼치는 순간의 온기</h4>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                봉투를 열고 글을 마주할 때 비로소 전해지는 진심.
+              </p>
+            </div>
+            <div className="bg-[#FCF9F5] p-6 md:p-7 rounded-2xl space-y-3">
+              <div className="w-12 h-12 bg-burgundy-50 text-burgundy-600 rounded-xl flex items-center justify-center">
+                <Mail size={22} />
               </div>
               <h4 className="text-lg font-bold text-[#1D1D1F]">희소성의 가치</h4>
               <p className="text-gray-600 text-sm leading-relaxed">
-                요즘 편지 보내는 사람 없잖아요. 그래서 받으면 진짜 특별해요. &quot;나한테 편지를?&quot; 하는 그 느낌이요.
+                요즘 편지 보내는 사람 없잖아요. 받으면 진짜 특별해요.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 이용 후기 */}
-      <section className="py-20 md:py-28 bg-[#FCF9F5]">
-        <div className="layout-container">
-          <div className="text-center mb-14">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#1D1D1F] mb-3">받아본 분들 이야기</h2>
-            <p className="text-base md:text-lg text-gray-600">솔직한 후기들을 모았어요</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <ReviewCard
-              text="매달 편지 오는 날이 제일 좋아요. 퇴근하고 현관문 열면 우편함부터 확인해요. 작가님 글 읽으면서 차 한 잔 하는 게 소확행이에요."
-              author="직장인 A님"
-              tag="하루편지 구독"
-            />
-            <ReviewCard
-              text="여자친구한테 1년 만에 편지 썼어요. 근데 막상 쓰려니까 뭘 써야 할지 몰라서 의뢰했는데, 제가 한 말 그대로 예쁘게 써주셔서 진짜 감사했어요. 여친이 울었어요."
-              author="20대 남성 B님"
-              tag="하트센드 이용"
-            />
-            <ReviewCard
-              text="엄마 환갑에 편지 드렸어요. 평소에 말로 못 하던 것들 다 담았는데, 엄마가 읽다가 우셨어요. 저도 울었고요. 돈으로 못 사는 선물이에요."
-              author="30대 여성 C님"
-              tag="하트센드 이용"
-            />
-            <ReviewCard
-              text="혼자 사는데 우편함에 청구서만 오다가 예쁜 편지 오니까 기분이 다르더라고요. 누가 나한테 뭔가를 보내줬다는 게 좋아요."
-              author="1인 가구 D님"
-              tag="하루편지 구독 중"
-            />
-            <ReviewCard
-              text="10년 넘게 연락 안 하던 고등학교 친구한테 화해 편지 보냈어요. 저도 미안했는데 먼저 말 꺼내기 어려웠거든요. 답장 왔을 때 진짜 뭉클했어요."
-              author="30대 E님"
-              tag="하트센드 이용"
-            />
-            <ReviewCard
-              text="남편이 편지를 안 쓰는 사람이에요. 근데 결혼기념일에 갑자기 편지가 와서 깜짝 놀랐어요. 알고 보니 여기서 대신 써준 거래요. 그래도 감동이에요."
-              author="기혼 여성 F님"
-              tag="하트센드 선물 수신"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* 기업 서비스 간단 소개 */}
       <section className="py-20 md:py-28 bg-white">
@@ -304,7 +338,8 @@ export default function Home({ adminState }: HomeProps) {
                   기업에서도 편지를 보내요
                 </h3>
                 <p className="text-[#F5F0E8]/70 text-base md:text-lg leading-relaxed word-keep">
-                  VIP 고객 감사 편지, 신규 직원 환영 키트, 크리에이터 팬레터 대행까지. 디지털 마케팅에 지친 고객에게 아날로그로 다가가 보세요. 반응이 달라요.
+                  중요한 고객을 위한 감사 편지부터, 팀원을 위한 따뜻한 환영의 메시지까지. <br />
+                  받는 분의 책상 위에 소중히 놓일 아날로그의 가치를 기업 서비스로 만나보세요. 잊히지 않는 브랜드 경험이 시작됩니다.
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <div className="flex items-center gap-2 text-[#F5F0E8]/60 text-sm">
@@ -343,11 +378,11 @@ export default function Home({ adminState }: HomeProps) {
           </div>
           <div className="space-y-3">
             {(adminState?.content?.faq || [
-              { id: 1, title: "편지가 도착하는 데 얼마나 걸려요?", text: "보통 주문 후 3-5일 정도 걸려요. 저희가 직접 쓰고 포장해서 우체국에 맡기거든요. 급하신 분은 미리 말씀해 주시면 최대한 맞춰드릴게요." },
-              { id: 2, title: "보내는 사람 이름 안 적어도 돼요?", text: "네, 익명으로 보내셔도 돼요. 아예 안 적으셔도 되고, 가명을 쓰셔도 되고, 받는 분만 알 수 있는 힌트만 넣으셔도 돼요." },
-              { id: 3, title: "해외로도 보낼 수 있어요?", text: "아직은 국내만 가능해요. 해외 배송은 준비 중이에요. 빨리 열 수 있도록 할게요." },
-              { id: 4, title: "글솜씨가 없는데 괜찮아요?", text: "저희가 대신 써드리는 서비스가 있어요. 어떤 상황인지, 어떤 마음인지만 말씀해 주시면 제가 문장으로 만들어 드릴게요. 수정도 가능해요." },
-              { id: 5, title: "환불은 어떻게 해요?", text: "제작 전이면 전액 환불해 드려요. 이미 쓰기 시작했으면 어렵지만, 상황 말씀해 주시면 최대한 맞춰드릴게요." }
+              { id: 1, title: "편지가 도착하는 데 얼마나 걸릴까요?", text: "정성스럽게 쓰고 포장하는 시간이 필요해, 보통 3-5일 정도 소요됩니다. 조금은 느리더라도 한 통 한 통에 진심을 담아 우체국에 맡기고 있어요. 특별히 기념일이 있으시다면 미리 말씀해 주세요." },
+              { id: 2, title: "익명으로 보내는 것도 가능한가요?", text: "네, 물론입니다. 보내는 분의 성함을 비워두거나 익명으로 처리하실 수 있어요. 가끔은 정체를 밝히지 않고 전하는 진심이 더 큰 울림을 주기도 하니까요." },
+              { id: 3, title: "혹시 해외로도 보낼 수 있나요?", text: "아직은 국내 우편만 가능합니다. 한글과 종이가 주는 가치를 세계 어디서든 느낄 수 있도록 해외 배송 서비스도 열심히 준비하고 있습니다." },
+              { id: 4, title: "글솜씨가 없는데 마음을 잘 전할 수 있을까요?", text: "그럼요. 저희의 대필 서비스는 화려한 문장을 만드는 것이 아니라, 당신의 투박한 진심을 가장 정중한 글로 옮겨드리는 일입니다. 상담을 통해 당신의 사연을 들려주시기만 하면 됩니다." },
+              { id: 5, title: "중간에 취소하고 싶으면 어떡하죠?", text: "편지 작성이 시작되기 전이라면 언제든 전액 환불이 가능합니다. 다만, 정성을 담아 글을 쓰기 시작한 이후에는 취소가 어려워요. 주문 전 신중한 결정 부탁드려요." }
             ]).map((item: ContentItem, idx: number) => (
               <div key={item.id || idx} className="bg-white border border-gray-100 rounded-2xl overflow-hidden">
                 <button
@@ -400,6 +435,75 @@ export default function Home({ adminState }: HomeProps) {
           </div>
         </div>
       </section>
+      {/* 공지사항 & 뉴스룸 릴리스: 신뢰성 부여 (롤백된 디자인 톤에 맞춤) */}
+      <section className="py-20 md:py-28 bg-white border-t border-gray-100">
+        <div className="layout-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+            {/* 공지사항 */}
+            <div className="space-y-10">
+              <div className="flex items-end justify-between border-b border-gray-100 pb-6">
+                <div className="space-y-1">
+                  <h2 className="text-2xl font-bold text-[#1D1D1F]">공지사항</h2>
+                  <p className="text-gray-400 text-xs">안내 및 업데이트 소식</p>
+                </div>
+                <Link href="/notice" className="text-xs font-bold text-[#991717] hover:underline flex items-center gap-1">
+                  더보기 <ArrowRight size={14} />
+                </Link>
+              </div>
+              <div className="space-y-1">
+                {adminState?.content?.noticeBoard?.slice(0, 3).map((notice: ContentItem) => (
+                  <Link
+                    key={notice.id}
+                    href={`/notice/${notice.id}`}
+                    className="group flex flex-col gap-1 py-4 hover:bg-gray-50/50 px-2 rounded-xl transition-colors border-b border-gray-50 last:border-0"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-[10px] font-medium text-gray-300 shrink-0">{notice.date || '02.03'}</span>
+                      <h4 className="text-[15px] font-bold text-[#3D3835] group-hover:text-[#991717] transition-colors line-clamp-1">{notice.title}</h4>
+                    </div>
+                  </Link>
+                ))}
+                {(!adminState?.content?.noticeBoard || adminState.content.noticeBoard.length === 0) && (
+                  <p className="text-gray-300 text-sm py-4">공지사항이 없습니다.</p>
+                )}
+              </div>
+            </div>
+
+            {/* 뉴스룸 */}
+            <div className="space-y-10">
+              <div className="flex items-end justify-between border-b border-gray-100 pb-6">
+                <div className="space-y-1">
+                  <h2 className="text-2xl font-bold text-[#1D1D1F]">뉴스룸</h2>
+                  <p className="text-gray-400 text-xs">언론 속의 유어포스트</p>
+                </div>
+                <Link href="/press" className="text-xs font-bold text-[#991717] hover:underline flex items-center gap-1">
+                  더보기 <ArrowRight size={14} />
+                </Link>
+              </div>
+              <div className="space-y-1">
+                {adminState?.content?.press?.slice(0, 3).map((press: ContentItem) => (
+                  <a
+                    key={press.id}
+                    href={press.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col gap-1 py-4 hover:bg-gray-50/50 px-2 rounded-xl transition-colors border-b border-gray-50 last:border-0"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-[10px] font-medium text-gray-300 shrink-0">{press.date || 'News'}</span>
+                      <h4 className="text-[15px] font-bold text-[#3D3835] group-hover:text-[#991717] transition-colors line-clamp-1">{press.title}</h4>
+                    </div>
+                  </a>
+                ))}
+                {(!adminState?.content?.press || adminState.content.press.length === 0) && (
+                  <p className="text-gray-300 text-sm py-4">최근 소식이 없습니다.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Structured Data (JSON-LD) */}
       <script
         type="application/ld+json"
@@ -436,5 +540,26 @@ function ReviewCard({ text, author, tag }: { text: string; author: string; tag: 
         <span className="text-[#6B5B4F] text-xs">{tag}</span>
       </div>
     </div>
+  );
+}
+
+// 공지사항 등 신규 기능에서 사용할 수도 있는 컴포넌트들 (롤백된 코드와의 호환성을 위해 유지)
+function ValueCard({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  return (
+    <div className="bg-[#FCF9F5] p-8 rounded-2xl space-y-4 border border-transparent hover:border-[#D4C8C1] transition-all">
+      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm text-[#991717]">
+        {icon}
+      </div>
+      <h4 className="text-lg font-bold text-[#1D1D1F]">{title}</h4>
+      <p className="text-gray-500 text-sm leading-relaxed">{text}</p>
+    </div>
+  );
+}
+
+function Badge({ text }: { text: string }) {
+  return (
+    <span className="px-4 py-1 bg-[#F5F0E8] border border-[#D4C8C1]/20 rounded-full text-[10px] text-[#6B5B4F] font-bold tracking-tight">
+      {text}
+    </span>
   );
 }
